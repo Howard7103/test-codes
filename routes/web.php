@@ -51,9 +51,16 @@ Route::get('/posts/{post}/zan','PostController@zan');
 //取消讚
 Route::get('/posts/{post}/unzan','PostController@unzan');
 
-//個人主頁
-Route::get('/posts/me/personal','PostController@personal');
+//個人中心
+Route::get('/user/{user}','UserController@show');
+Route::post('/user/{user}/fan','UserController@fan');
+Route::post('/user/{user}/unfan','UserController@unfan');
 
 //專題頁面
-Route::get('/posts/me/question','PostController@question');
+Route::get('/topic/{user}','PostController@question');
 
+//通知頁面
+Route::get('/posts/me/notice','PostController@notice');
+
+//搜索頁面
+Route::get('/posts/me/search','PostController@search');

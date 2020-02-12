@@ -13,15 +13,15 @@
         <!--Wrapper for slides 幻燈片包裝器-->
         <div class="carousel-inner" >
             <div class="item active">
-                <img src="photo/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
+                <img src="/photo/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
                 <div class="carousel-caption">...</div>
             </div>
             <div class="item">
-                <img src="photo/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
+                <img src="/photo/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
                 <div class="carousel-caption">...</div>
             </div>
             <div class="item">
-                <img src="photo/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
+                <img src="/photo/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
                 <div class="carousel-caption">...</div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="blog-post">
                     <h2 class="blog-post-title"><a href="/posts/{{$post->id}}">{{$post->title}}</a></h2>
 
-                    <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} by <a href="/user/5">{{$post->user-> name}}</a></p>
+                    <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}} by <a href="/user/{{$post->user->id}}">{{$post->user->name}}</a></p>
 
                     {!! Str::limit($post->content, 100, '...') !!}       <!-- Str::limit => 限制文章在畫面上出現多少字,此處為限制100字,超過100字則以...代替 -->
                     <p class="blog-post-meta">讚 {{$post->zans_count}} | 評論 {{$post->comments_count}} </p>

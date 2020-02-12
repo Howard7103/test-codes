@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Post;
+use App\Users;
 use App\Zan;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,9 +15,8 @@ class PostController extends Controller
     //列表頁面
     public function index()
     {
-
-
         $posts = Post::orderBy('created_at','desc')->withCount(["comments","zans"])->paginate(6);
+
         return view("post/index",compact('posts'));
     }
 
@@ -129,15 +130,19 @@ class PostController extends Controller
 
 
 
-    public function personal()
-    {
-        return view('personal');
-    }
-
-
     public function question()
     {
         return view('question');
+    }
+
+    public function notice()
+    {
+        return view('notice');
+    }
+
+    public function search()
+    {
+        return view('search');
     }
 
 }
