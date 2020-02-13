@@ -66,3 +66,6 @@ Route::get('/posts/me/notice','PostController@notice');
 
 //搜索頁面
 Route::get('/posts/me/search','PostController@search');
+
+
+include_once('admin.php');

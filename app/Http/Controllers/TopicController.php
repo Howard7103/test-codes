@@ -33,7 +33,7 @@ class TopicController extends Controller
         ]);
 
         //邏輯
-        $post_ids = request('post_ids');    //獲取post_ids
+        $post_ids = request('post_ids');   //獲取post_ids
         $topic_id = $topic->id;                 //獲取topic_id
         foreach ($post_ids as $post_id){        //利用foreach迴圈來循環查找有無topic_id,post_id有的話獲取出來,沒有的話則創建
             PostTopic::firstOrCreate(compact('topic_id','post_id'));
