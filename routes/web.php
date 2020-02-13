@@ -56,8 +56,10 @@ Route::get('/user/{user}','UserController@show');
 Route::post('/user/{user}/fan','UserController@fan');
 Route::post('/user/{user}/unfan','UserController@unfan');
 
-//專題頁面
-Route::get('/topic/{user}','PostController@question');
+//專題詳情頁面
+Route::get('/topic/{topic}','TopicController@show');
+//投稿
+Route::post('/topic/{topic}/submit','TopicController@submit');
 
 //通知頁面
 Route::get('/posts/me/notice','PostController@notice');

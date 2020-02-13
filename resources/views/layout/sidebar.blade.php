@@ -35,17 +35,11 @@
         </div>
 
         <ul class="category-root list-group">
+            @foreach($topics as $topic)
             <li class="list-group-item">
-                <a href="/topic/1">旅遊</a>
+                <a href="/topic/{{$topic->id}}">{{$topic->name}}</a>
             </li>
-
-            <li class="list-group-item">
-                <a href="/topic/2">輕鬆</a>
-            </li>
-
-            <li class="list-group-item">
-                <a href="/topic/3">測試專題</a>
-            </li>
+            @endforeach
         </ul>
     </aside>
 </div>

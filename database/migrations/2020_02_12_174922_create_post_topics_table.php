@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Rollback extends Migration
+class CreatePostTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class Rollback extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('post_topics', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('post_id')->default(0);
+            $table->integer('topic_id')->default(0);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Rollback extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post_topics');
     }
 }
