@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     //個人設置頁面
-    public function setting()
+    public function setting(User $user)
     {
-        return view('user.setting');
+        $user = Auth::user();
+        return view('user.setting',compact('user'));
     }
 
     //個人設置行為

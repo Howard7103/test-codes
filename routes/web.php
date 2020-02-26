@@ -22,9 +22,9 @@ Route::post('/login','LoginController@login');
 //登出行為
 Route::get('logout','LoginController@logout');
 //個人設置頁面
-Route::get('/user/me/setting','UserController@setting');
+Route::get('/user/{user}/setting','UserController@setting');
 //個人設置操作
-Route::post('/user/me/setting','UserController@settingStore');
+Route::post('/user/{user}/setting','UserController@settingStore');
 
 
 

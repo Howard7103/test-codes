@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 02 月 26 日 02:49
+-- 產生時間： 2020 年 02 月 26 日 03:31
 -- 伺服器版本： 5.7.13
 -- PHP 版本： 7.2.13-1+ubuntu14.04.1+deb.sury.org+1
 
@@ -41,10 +41,10 @@ CREATE TABLE `admin_permissions` (
 --
 
 INSERT INTO `admin_permissions` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'system', '系統管理', '2020-02-26 10:18:51', '2020-02-26 10:18:51'),
-(2, 'post', '文章管理', '2020-02-26 10:19:02', '2020-02-26 10:19:02'),
-(3, 'topic', '專題管理', '2020-02-26 10:19:11', '2020-02-26 10:19:11'),
-(4, 'notice', '通知管理', '2020-02-26 10:19:20', '2020-02-26 10:19:20');
+(1, 'system', '系統管理', '2020-02-26 11:24:21', '2020-02-26 11:24:21'),
+(2, 'post', '文章管理', '2020-02-26 11:24:27', '2020-02-26 11:24:27'),
+(3, 'topic', '專題管理', '2020-02-26 11:24:35', '2020-02-26 11:24:35'),
+(4, 'notice', '通知管理', '2020-02-26 11:24:44', '2020-02-26 11:24:44');
 
 -- --------------------------------------------------------
 
@@ -66,12 +66,12 @@ CREATE TABLE `admin_permission_role` (
 
 INSERT INTO `admin_permission_role` (`id`, `role_id`, `permission_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
-(2, 3, 2, NULL, NULL),
-(3, 4, 3, NULL, NULL),
-(4, 4, 4, NULL, NULL),
-(5, 1, 2, NULL, NULL),
-(6, 1, 3, NULL, NULL),
-(7, 1, 4, NULL, NULL);
+(2, 1, 2, NULL, NULL),
+(3, 1, 3, NULL, NULL),
+(4, 1, 4, NULL, NULL),
+(5, 2, 2, NULL, NULL),
+(6, 3, 3, NULL, NULL),
+(7, 3, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -92,9 +92,9 @@ CREATE TABLE `admin_roles` (
 --
 
 INSERT INTO `admin_roles` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'firstUser', '系統管理', '2020-02-26 10:19:47', '2020-02-26 10:19:47'),
-(3, 'test02', '文章管理', '2020-02-26 10:20:15', '2020-02-26 10:20:15'),
-(4, '888', '專題管理 ＆ 通知管理', '2020-02-26 10:20:37', '2020-02-26 10:20:37');
+(1, 'firstUser', '系統管理', '2020-02-26 11:24:56', '2020-02-26 11:24:56'),
+(2, 'test02', '文章管理', '2020-02-26 11:25:10', '2020-02-26 11:25:10'),
+(3, '888', '專題 ＆ 通知管理', '2020-02-26 11:25:31', '2020-02-26 11:25:31');
 
 -- --------------------------------------------------------
 
@@ -113,9 +113,11 @@ CREATE TABLE `admin_role_user` (
 --
 
 INSERT INTO `admin_role_user` (`id`, `role_id`, `user_id`) VALUES
-(1, 1, 3),
-(2, 3, 4),
-(3, 4, 5);
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 3, 4),
+(5, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -136,9 +138,9 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `name`, `password`, `created_at`, `updated_at`) VALUES
-(3, 'firstUser', '$2y$10$Nmiim3Fxyvo9v09npi.t/uyj.tsKqNRoTE0txfDKJfHMHy8ArpalS', '2020-02-26 10:08:47', '2020-02-26 10:08:47'),
-(4, 'test02', '$2y$10$KCOPnvSS4DfCdln/Drd9wOFd4DXxDXLkqRSXJ78kCJuXExLpg1M5K', '2020-02-26 10:09:04', '2020-02-26 10:09:04'),
-(5, '888', '$2y$10$XXtYqNNLoFnI7y9YBLQbM.k8gj3PXYgNThxf6lZJEEJQrJDLDR0IC', '2020-02-26 10:09:24', '2020-02-26 10:09:24');
+(1, 'firstUser', '$2y$10$/91XMZM6G5vSSg82u16i7OVyyfeMJeI7TXhoSKsoETyDSzLFf8G1O', '2020-02-26 11:22:40', '2020-02-26 11:22:40'),
+(2, 'test02', '$2y$10$SjD9GDb4HM9IMOh6SAxLVOTvYjy5KiL5WavlD.cvwLY3T6zKpS8jW', '2020-02-26 11:22:54', '2020-02-26 11:22:54'),
+(5, '888', '$2y$10$GITRagnMfOl9JRDajONZ3eunhCPpG1A2dIZX8Q4TnVPRxTIJrCHoG', '2020-02-26 11:28:16', '2020-02-26 11:28:16');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `user_id`, `content`, `created_at`, `updated_at`) VALUES
-(1, 8, 2, '讚讚讚', '2020-02-26 10:31:13', '2020-02-26 10:31:13');
+(1, 3, 1, '讚讚讚', '2020-02-26 11:29:24', '2020-02-26 11:29:24'),
+(2, 5, 1, '棒棒棒', '2020-02-26 11:31:07', '2020-02-26 11:31:07');
 
 -- --------------------------------------------------------
 
@@ -190,6 +193,13 @@ CREATE TABLE `fans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `fans`
+--
+
+INSERT INTO `fans` (`id`, `fan_id`, `star_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, '2020-02-26 11:29:26', '2020-02-26 11:29:26');
 
 -- --------------------------------------------------------
 
@@ -224,21 +234,21 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2020_02_05_022040_create_posts_table', 1),
-(5, '2020_02_10_092254_create_comments_table', 1),
-(6, '2020_02_10_131211_create_zans_table', 1),
-(7, '2020_02_12_165708_create_fans_table', 1),
-(8, '2020_02_12_174913_create_topics_table', 1),
-(9, '2020_02_12_174922_create_post_topics_table', 1),
-(10, '2020_02_17_092337_create_admin_users_table', 1),
-(11, '2020_02_17_133924_alert_posts_table', 1),
-(12, '2020_02_18_101441_create_permision_and_roles', 1),
-(13, '2020_02_18_101441_create_permission_and_roles', 1),
-(14, '2020_02_20_134333_create_notice_table', 1),
-(15, '2020_02_20_171726_create_jobs_table', 1);
+(16, '2014_10_12_000000_create_users_table', 1),
+(17, '2014_10_12_100000_create_password_resets_table', 1),
+(18, '2019_08_19_000000_create_failed_jobs_table', 1),
+(19, '2020_02_05_022040_create_posts_table', 1),
+(20, '2020_02_10_092254_create_comments_table', 1),
+(21, '2020_02_10_131211_create_zans_table', 1),
+(22, '2020_02_12_165708_create_fans_table', 1),
+(23, '2020_02_12_174913_create_topics_table', 1),
+(24, '2020_02_12_174922_create_post_topics_table', 1),
+(25, '2020_02_17_092337_create_admin_users_table', 1),
+(26, '2020_02_17_133924_alert_posts_table', 1),
+(27, '2020_02_18_101441_create_permision_and_roles', 1),
+(28, '2020_02_18_101441_create_permission_and_roles', 1),
+(29, '2020_02_20_134333_create_notice_table', 1),
+(30, '2020_02_20_171726_create_jobs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -259,7 +269,7 @@ CREATE TABLE `notices` (
 --
 
 INSERT INTO `notices` (`id`, `title`, `content`, `created_at`, `updated_at`) VALUES
-(1, '這個是通知標題', '這個是通知標題', '2020-02-26 10:25:09', '2020-02-26 10:25:09');
+(1, '通知', '通知', '2020-02-26 11:28:44', '2020-02-26 11:28:44');
 
 -- --------------------------------------------------------
 
@@ -306,13 +316,11 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`, `status`) VALUES
-(4, 'sadasdasd', '<p>s<em>adasdasdsadasdasdsadasdasdsadasdasdsadasdas</em>d</p>', 3, '2020-02-26 10:14:58', '2020-02-26 10:21:45', 1),
-(5, '456789', '<p><strong>456789456789</strong></p>', 3, '2020-02-26 10:15:24', '2020-02-26 10:21:45', 1),
-(6, '我有權限了', '<p>我有權限了我有權限了</p>', 2, '2020-02-26 10:15:40', '2020-02-26 10:21:45', 1),
-(7, '這是寫文章測試', '<p>這是寫文章測試</p>', 2, '2020-02-26 10:15:46', '2020-02-26 10:21:44', 1),
-(8, '888888888', '<p>888888888</p>', 4, '2020-02-26 10:15:59', '2020-02-26 10:21:44', 1),
-(9, '寫文章後台通過測試', '<p>寫文章後台通過測試</p>', 2, '2020-02-26 10:24:40', '2020-02-26 10:25:49', -1),
-(10, '寫文章後台通過測試', '<p>寫文章後台通過測試</p>', 2, '2020-02-26 10:26:15', '2020-02-26 10:26:15', 0);
+(1, '我有權限了', '<p><strong>我有權限了我有權限了</strong></p>', 1, '2020-02-26 11:21:19', '2020-02-26 11:21:19', 0),
+(2, '這是寫文章測試', '<p>這是寫文章測試</p>', 2, '2020-02-26 11:21:33', '2020-02-26 11:21:33', 0),
+(3, '88888888', '<p>88888888</p>', 3, '2020-02-26 11:21:46', '2020-02-26 11:21:46', 0),
+(4, '旅遊文章測試', '<p>旅遊文章測試旅遊文章測試</p>', 1, '2020-02-26 11:30:18', '2020-02-26 11:30:18', 0),
+(5, '專題文章測試', '<p>專題文章測試專題文章測試</p>', 1, '2020-02-26 11:30:30', '2020-02-26 11:30:30', 0);
 
 -- --------------------------------------------------------
 
@@ -333,8 +341,8 @@ CREATE TABLE `post_topics` (
 --
 
 INSERT INTO `post_topics` (`id`, `post_id`, `topic_id`, `created_at`, `updated_at`) VALUES
-(1, 6, 1, '2020-02-26 10:30:30', '2020-02-26 10:30:30'),
-(2, 10, 2, '2020-02-26 10:30:38', '2020-02-26 10:30:38');
+(1, 4, 1, '2020-02-26 11:30:35', '2020-02-26 11:30:35'),
+(2, 5, 2, '2020-02-26 11:30:39', '2020-02-26 11:30:39');
 
 -- --------------------------------------------------------
 
@@ -354,8 +362,8 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, '旅遊', '2020-02-26 10:21:26', '2020-02-26 10:21:26'),
-(2, '專題測試', '2020-02-26 10:21:34', '2020-02-26 10:21:34');
+(1, '旅遊', '2020-02-26 11:28:31', '2020-02-26 11:28:31'),
+(2, '專題', '2020-02-26 11:28:36', '2020-02-26 11:28:36');
 
 -- --------------------------------------------------------
 
@@ -369,6 +377,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avator` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -378,10 +387,10 @@ CREATE TABLE `users` (
 -- 傾印資料表的資料 `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'firstUser', 'firstUser@gmail.com', NULL, '$2y$10$cghpm8LR713B8cbIvGOzMelHAGCptVf7M7F99RKyBKSXIn4fzPpwi', NULL, '2020-02-26 09:47:44', '2020-02-26 09:47:44'),
-(3, 'test02', '456@gmail.com', NULL, '$2y$10$p4yxHaR.G4p438Y5d06HUufIh7/jcl1DVGu/ab155DBItKht2z3gO', NULL, '2020-02-26 10:09:34', '2020-02-26 10:09:34'),
-(4, '888', '888@gmail.com', NULL, '$2y$10$nErARfvZVPv1foIpqpgRJeN4KhYpZrjeaM0piFs.0PA.llO3OEdbe', NULL, '2020-02-26 10:09:46', '2020-02-26 10:09:46');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `avator`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'firstUser', 'firstUser@gmail.com', NULL, '$2y$10$rkhnOkFeOcjQsFt/SN4/uuObIVbAuSEQoZHXIpkhcAYhCcUek7mWq', NULL, NULL, '2020-02-26 11:20:39', '2020-02-26 11:20:39'),
+(2, 'test02', '456@gmail.com', NULL, '$2y$10$D8.nbP.r6GPX8Wo1LIbVgui21mZqT8GTmlwFkib3WxpqpyotuKMDm', NULL, NULL, '2020-02-26 11:20:58', '2020-02-26 11:20:58'),
+(3, '888', '888@gmail.com', NULL, '$2y$10$sbG3bSYOad3xbRw5o4HB6O9qJ4/9dMZd6KZSihCM39zRB801.8L36', NULL, NULL, '2020-02-26 11:21:06', '2020-02-26 11:21:06');
 
 -- --------------------------------------------------------
 
@@ -400,9 +409,9 @@ CREATE TABLE `user_notice` (
 --
 
 INSERT INTO `user_notice` (`id`, `user_id`, `notice_id`) VALUES
-(1, 2, 1),
-(2, 3, 1),
-(3, 4, 1);
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -423,8 +432,8 @@ CREATE TABLE `zans` (
 --
 
 INSERT INTO `zans` (`id`, `post_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, '2020-02-26 09:47:55', '2020-02-26 09:47:55'),
-(2, 8, 2, '2020-02-26 10:30:59', '2020-02-26 10:30:59');
+(1, 3, 1, '2020-02-26 11:29:19', '2020-02-26 11:29:19'),
+(2, 5, 1, '2020-02-26 11:30:56', '2020-02-26 11:30:56');
 
 --
 -- 已傾印資料表的索引
@@ -566,13 +575,13 @@ ALTER TABLE `admin_permission_role`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin_roles`
 --
 ALTER TABLE `admin_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin_role_user`
 --
 ALTER TABLE `admin_role_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin_users`
@@ -584,7 +593,7 @@ ALTER TABLE `admin_users`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `failed_jobs`
@@ -608,7 +617,7 @@ ALTER TABLE `jobs`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `notices`
@@ -626,7 +635,7 @@ ALTER TABLE `permision_and_roles`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `post_topics`
@@ -644,7 +653,7 @@ ALTER TABLE `topics`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user_notice`
