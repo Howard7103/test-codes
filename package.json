@@ -19,6 +19,6 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "ckeditor4": "^4.13.1"
+        "ckeditor4": "^4.16.2"
     }
 }
